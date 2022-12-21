@@ -1,0 +1,11 @@
+body {
+    height: 750px;
+    width: 100%;
+    background-image: url("../HomepageImage/telescope.jpg");
+    background-color: white;
+    display: flex;
+    background-size:  100% 100%;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    
+}

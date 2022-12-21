@@ -1,0 +1,65 @@
+.title{
+    font-family: Tahoma;
+    justify-content: center;
+    /*position: absolute; */
+    top: 8px;
+    font-weight: bold;
+    text-align: center;
+
+}
+
+.comment{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-style: sans-serif italic;
+    font-size: 10;
+    /*position: absolute;*/
+    bottom: 8px;
+    text-align: center;
+}
+
+.FlexItem{
+    box-shadow: -5px -5px 10px rgba(255, 255, 255, 0.8), 5px 5px 10px rgba(0,0,0, 0.2);
+    transition: 0.5s;
+    cursor: pointer;
+    width: 200px;
+    background-color: white;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding: 8px;
+    margin: 8px;        
+}
+
+.navigationBar{
+    font-size: 20px;
+    font-weight: bolder;
+    justify-content: space-between;
+    width: 150px;
+    color: black;
+    font-family: Tahoma;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: -5px -5px 10px rgba(255, 255, 255, 0.8), 5px 5px 10px rgba(0,0,0, 0.2);
+    
+}
+
+.navigationBar:hover {
+    background-color: lightgray;
+}
+
+.smallDivFotCheckBox{
+    display: flex;
+    /*justify-content: space-around;*/
+}
+
+.checked{
+    width: 20px;
+    height: 20px;    
+}
+
+
+
+
+
+

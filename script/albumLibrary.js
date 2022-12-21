@@ -11,16 +11,11 @@ let library;  //Global varibale, Loaded async from the current server in window.
 //use the DOMContentLoaded, or window load event to read the library async and render the images
 window.addEventListener('DOMContentLoaded', async () => {
 
-library = await lib.pictureLibraryBrowser.fetchJSON(libraryJSON);  //reading library from JSON on local server 
-//library = lib.pictureLibraryBrowser.createFromTemplate();  //generating a library template instead of reading JSON
+library = await lib.pictureLibraryBrowser.fetchJSON(libraryJSON);  //reading library from JSON on local server
 
 for (const album of library.albums) {
-
-    //renderImage(album.headerImage, album.id, picture.id,);
-    for (const picture of album.pictures) {
-      renderImage(`${album.path}/${picture.imgLoRes}`, picture.id, picture.title, picture.comment);
-      renderImage(`${album.path}/${picture.imgHiRes}`, picture.id, picture.title, picture.comment);
-    }
+      renderAlbums(album.headerImage, album.id, album.title, album.comment);
+    
   }
 })
 
@@ -30,16 +25,14 @@ window.addEventListener('click',  () => {
   console.log (`library has ${library.albums.length} albums`);
 });
 
-//Render the images
-function renderImage(src, tag, Title, Comment) {
+
+function renderAlbums(header, albumId, Title, Comment) {
 
   const div = document.createElement('div');
   div.className = `FlexItem`;
-  div.dataset.albumId = tag;
 
   const img = document.createElement('img');
-  img.src = src;
-  img.alt = Comment;
+  img.src = header;
   div.appendChild(img);
 
   const title = document.createElement('p');
@@ -54,6 +47,12 @@ function renderImage(src, tag, Title, Comment) {
 
   const imgFlex = document.querySelector('.FlexWrap');
   imgFlex.appendChild(div);
+
+  div.addEventListener('click', () =>{
+    sessionStorage.setItem('chosenAlbum', JSON.stringify(albumId));
+    window.location.href = "inAlbum.html";
+
+  })
 };
 
 

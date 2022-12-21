@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>appPictureLibrary</title>
+  <meta name="viewport" content="width=device-width" />
+  <link rel="stylesheet" href="./css/appPictureLibrary.css" />
+  <link rel="stylesheet" href="./css/items.css" />
+  <link rel="stylesheet" href="./css/popup.css"/>
+
+</head>
+
+<body>
+  <div class="Main">
+    <nav class="Menu">
+      <a href="index.html" class="navigationBar">Home</a>
+      <a href="pictures.html" class="navigationBar">Pictures</a>
+      <a href="album.html" class="navigationBar">Albums</a>  
+    </nav>
+     
+<div class="albumBody">
+  <div class="slideshowButton">
+    <button>Slideshow</button>
+  </div>
+  <div class="FlexWrap">    
+    <!-- Below is being rendered in the js
+    <div class="FlexItem">
+    </div>
+    -->    
+  </div> 
+</div> 
+
+  <div class="popup" id="myPopup">
+    <span class ="close">&times;</span>
+    <div id="carouselTitle"></div>    
+    <img class="image" id="img01"></img>    
+    <div id="pictureText"></div>
+
+  
+
+  </div>
+</div>
+
+  <script type="module" src="./script/inAlbum.js"></script>
+  <script type="module" src="./script/appPictureLibrary.js"></script>
+
+</body>
+
+</html>
+<!--  Exercise: 
+-->

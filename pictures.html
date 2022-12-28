@@ -7,6 +7,9 @@
   <meta name="viewport" content="width=device-width" />
   <link rel="stylesheet" href="./css/appPictureLibrary.css" />
   <link rel="stylesheet" href="./css/items.css" />
+  <link rel="stylesheet" href="./css/popup.css" />
+  <link rel="stylesheet" href="./css/modalWindow.css" />
+
 </head>
 
 <body>
@@ -25,9 +28,40 @@
     </div>
     -->
   </div>
-</div>
+
+  <div class="popup" id="myPopup">
+    <span class ="close">&times;</span>
+    <div id="carouselTitle"></div>    
+    <img class="image" id="img01"></img>    
+    <div id="pictureText"></div>
+  </div>
+
+  <div id="editModal" class="pageContent">
+    <div class="windowModal">
+      <div class="windowModalHeader">
+        <h2 class="brand-title">EDIT</h2>
+        <span class="btnCloseModal">&times;</span>
+      </div>
+
+      <div class="windowModalContent">
+        <form id="add-Modal-Form">
+          <div class="editInputs">
+            <label id="editLblTitle">TITLE</label>
+            <input type="text" name="modalTitle" id="modalTitle" required />
+            <label id="editLblDescription">DESCRIPTION</label>
+            <input
+              type="text"
+              id="modalDescription"
+              name="modalDescription"
+              required
+            />
+
+            <button id="submitBtn" type="submit">SAVE</button>
+          </div>
+       </div>
 
   <script type="module" src="./script/appPictureLibrary.js"></script>
+ 
 
 </body>
 

@@ -14,12 +14,13 @@ window.addEventListener('DOMContentLoaded', async () => {
 const getAlbumId = JSON.parse(sessionStorage.getItem("chosenAlbum")) || []
 library = await lib.pictureLibraryBrowser.fetchJSON(libraryJSON);  //reading library from JSON on local server
 
+
   for(const album of library.albums){
     if(album.id === getAlbumId){
         for(const picture of album.pictures){
             renderImage(`${album.path}/${picture.imgHiRes}`, picture.id, picture.title, picture.comment);
             renderImage(`${album.path}/${picture.imgLoRes}`, picture.id, picture.title, picture.comment);
-
+            
         }
     }
   }
@@ -81,30 +82,31 @@ function renderImage(src, tag, Title, Comment) {
     div.appendChild(smallDiv);
   
     const imgFlex = document.querySelector('.FlexWrap');
-    imgFlex.appendChild(div);
-
-    //SLIDESHOW
-    const slideshowButton = document.createElement('')
-    const popup = document.getElementById('myPopup');
-    const carouselTitle = document.getElementById('carouselTitle');
-    const pic = document.getElementById('img01');
-    const pictureText = document.getElementById('pictureText');
-
-    img.onclick = function(){
-        popup.style.display = "block";
-        carouselTitle.innerHTML= Title;
-        pic.src = this.src;
-        pictureText.innerHTML= this.alt;
-        //sessionStorage.setItem('chosenPic', JSON.stringify(tag));
-    }
-
-    var span = document.getElementsByClassName('close')[0];
-
-    span.onclick = function(){
-        popup.style.display="none";
-    }
-
+    imgFlex.appendChild(div);   
+    
   };
+
+  let slideShowBtn = document.querySelector('.slideShowBtn');
+
+  slideShowBtn.addEventListener('click', () => {
+
+    let allChecked = document.getElementsByClassName("checked");
+    let allCheckedTrue = [];
+
+    for(const box of allChecked){
+      if(box.checked === true){
+        allCheckedTrue.push(box.id);
+      }
+    }
+
+    sessionStorage.setItem("pictureToDisplay", JSON.stringify(allCheckedTrue));
+    location.href ="/slideShow.html";
+
+
+
+  });
+
+  
 
 
 

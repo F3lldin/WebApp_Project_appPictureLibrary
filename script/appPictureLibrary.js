@@ -52,10 +52,69 @@ function renderImage(src, tag, Title, Comment) {
   comment.innerHTML = Comment;
   div.appendChild(comment);
 
+   //POPUP PART
+   const popup = document.getElementById('myPopup');
+   const carouselTitle = document.getElementById('carouselTitle');
+   const pic = document.getElementById('img01');
+   const pictureText = document.getElementById('pictureText');
+
+   img.onclick = function(){
+       popup.style.display = "block";
+       carouselTitle.innerHTML= Title;
+       pic.src = this.src;
+       pictureText.innerHTML= this.alt;
+   }
+
+   var span = document.getElementsByClassName('close')[0];
+
+   span.onclick = function(){
+       popup.style.display="none";
+   }
+
+  //Logic for Edit Button
+
+  const smallDiv = document.createElement('div');
+  smallDiv.className = "smallDivForEditBtn";
+
+  const editBtn = document.createElement('button');
+  editBtn.className = "editBtn";
+  editBtn.id = tag;
+  editBtn.innerHTML = "Edit";
+  smallDiv.appendChild(editBtn); 
+
+  let pageContent = document.querySelector(".pageContent");
+  let closeBtn = document.querySelector(".windowModalHeader .btnCloseModal"); 
+  let modalTitle = document.getElementById("modalTitle");
+  let modalDescription = document.getElementById("modalDescription"); 
+
+  editBtn.addEventListener('click', () => {
+
+    pageContent.style.display = "block";
+    modalTitle.value = Title;
+    modalDescription.value = Comment;
+
+    let submitBtn = document.getElementById("submitBtn")
+    submitBtn.addEventListener('submit', () => {
+      Title = modalTitle.innerText;
+      Comment = modalDescription.innerText;
+    })
+     
+
+  });
+ 
+  closeBtn.addEventListener('click', () => { pageContent.style.display = "none"; }) 
+
+  window.addEventListener('click', (e) => {
+
+    if (e.target == pageContent) {
+      pageContent.style.display = "none";
+    }
+
+  });
+
+  div.appendChild(smallDiv);  
+
   const imgFlex = document.querySelector('.FlexWrap');
   imgFlex.appendChild(div);
 };
-
-
-
 

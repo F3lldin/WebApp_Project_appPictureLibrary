@@ -12,23 +12,6 @@
     
 }
 
-.leftRightButtons {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-.leftArrow, .rightArrow {
-    cursor: pointer;
-    color: red;
-    background: none;
-    border: none;
-    font-weight: bold;
-    font-size: 50px;    
-}
-
-
-
 #carouselTitle{
     margin: auto;
     display: block;
@@ -59,6 +42,7 @@
     text-align: center;
     margin: auto;
     padding: 5px 5px;
+    max-width: 700px;
     
 }
 

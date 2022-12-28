@@ -1,77 +1,68 @@
-   
-.popup{
 
-    display: none;
-    position: fixed;
-    width: 100%;
+.FlexWrap{
+
+    background-color: white;
+	  font-family: 'Oswald', sans-serif;
     height: 100%;
-    background-color: rgb(0,0,0,0.8);
-    top: 0;
-    left: 0;
-    padding-top: 20px;     
-    
-}
-
-.leftArrow, .rightArrow {
-    top: 50%;
-    cursor: pointer;
-    color: red;
-    background: none;
-    border: none;
-    font-weight: bold;
-    font-size: 50px;
-}
-
-#carouselTitle{
-    margin: auto;
-    display: block;
-    color: white;
-    max-width: 650px;
-    padding: 10px 0;
-    margin-top: 20px;
-    margin-bottom: 5px;
-    text-align: center;
-    font-family: tahoma, sans-serif;
-    size: 16px;
-}
-
-.image{
-        
-    display: block;
-    margin: auto;
-    width: 80%;
-    max-width: 700px;
-    object-fit: cover;
-}
-
-#pictureText{
-    display: block;
-    color: white;
-    width: 60%;
-    height: 100px;
-    text-align: center;
-    margin: auto;
-    padding: 5px 5px;
-    
-}
-
-.image, #pictureText{
-    height: 70%;
     width: 100%;
-    object-fit: contain;
-
+    margin-left: 0px;
+    margin-top: 60px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-wrap: wrap;          /* test with wrap nowrap */
+    align-items: center;      /* alignment along cross axis - center flex-start flex-end */
+    justify-content:space-evenly;  /* alignment along main axis - center flex-start flex-end space-evenly space-between space-around */
+    padding-left: 18px;
 }
 
-.close {
-    font-size: 40px;
-    font-weight: bold;
-    color: red;
-    position: absolute;
-    top: 15px;
-    right: 35px;
-    cursor: pointer;
+
+.DisplayedSlideShow{    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    width: 70vw;  
 }
 
-.close:hover {
-    opacity: 0.5;
-}
+img{
+    flex-shrink: 0;  
+    min-width: 100%;  
+    min-height: 80%;
+    object-fit: contain;        
+
+  }
+     
+  .Title{  
+    display: flex;  
+    justify-content: center;  
+    color: black;  
+    font-weight: bold; 
+    font-size: 20px;  
+    font-style:normal;
+  
+  }
+      
+  .Comment{  
+    margin: auto;  
+    display: block;  
+    width: 100%;  
+    max-width: 700px;  
+    text-align: center;  
+    color: black;  
+    padding: 10px 0;  
+    height: 200px;  
+    overflow-wrap: break-word;  
+    font-style: italic;  
+    font-size: 14px;  
+    flex-wrap: wrap;
+  }
+  
+  .prev, .next {  
+    cursor: pointer;  
+    width: auto;  
+    margin-top: -22px;  
+    padding: 10px;  
+    color: black;  
+    font-weight: bold;  
+    font-size: 40px;  
+  }

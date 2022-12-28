@@ -7,8 +7,8 @@
   <meta name="viewport" content="width=device-width" />
   <link rel="stylesheet" href="./css/appPictureLibrary.css" />
   <link rel="stylesheet" href="./css/items.css" />
-  <link rel="stylesheet" href="./css/popup.css"/>  
-
+  <link rel="stylesheet" href="./css/slideshow.css"/>
+ 
 </head>
 
 <body>
@@ -19,7 +19,7 @@
       <a href="album.html" class="navigationBar">Albums</a>
   
     </nav>
-      
+  <div class ="SlideShow-Container"> 
   <div class="FlexWrap">
   
     <!-- Below is being rendered in the js
@@ -28,23 +28,11 @@
     -->
   </div>
 
-  <div class="popupSlideshow" id="myPopupSlideshow">
-    <span class ="closeSlideshow">&times;</span>
-    <div id="carouselTitleSlideshow"></div>
-    <div class="leftRightButtons">
-      <button class="leftArrow">&larr;</button>
-      <button class="rightArrow">&rarr;</button> 
-    </div>      
-    <img class="imageSlideshow" id="img01"></img>
-    <div id="pictureTextSlideshow"></div>
-
   
-
-  </div>
 </div>
-
-  <script type="module" src="./script/inAlbum.js"></script>
-  <script type="module" src="./script/appPictureLibrary.js"></script>
+</div>
+<script type="module" src="./script/slideshow.js"></script> 
+  
 
 </body>
 

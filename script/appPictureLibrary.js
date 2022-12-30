@@ -18,8 +18,6 @@ library = await pictureLibraryBrowser.fetch(); //reading library from JSON on lo
 //library = lib.pictureLibraryBrowser.createFromTemplate();  //generating a library template instead of reading JSON
 
 for (const album of library.albums) {
-
-    //renderImage(album.headerImage, album.id, picture.id,);
     for (const picture of album.pictures) {      
       renderImage(`${album.path}/${picture.imgLoRes}`, picture.id, picture.title, picture.comment);
       renderImage(`${album.path}/${picture.imgHiRes}`, picture.id, picture.title, picture.comment);      
@@ -28,7 +26,6 @@ for (const album of library.albums) {
 })
 
 window.addEventListener('click',  () => {
-
   //just to confirm that the library is accessible as a global variable read async
   console.log (`library has ${library.albums.length} albums`);
 });
@@ -65,7 +62,7 @@ function renderImage(src, tag, Title, Comment) {
        popup.style.display = "block";
        carouselTitle.innerHTML= Title;
        pic.src = this.src;
-       pictureText.innerHTML= this.alt;
+       pictureText.innerHTML= Comment;
    }
 
    var span = document.getElementsByClassName('close')[0];
@@ -91,25 +88,19 @@ function renderImage(src, tag, Title, Comment) {
   let modalDescription = document.getElementById("modalDescription"); 
 
   editBtn.addEventListener('click', () => {
-
     pageContent.style.display = "block";
     modalTitle.value = Title;
     modalDescription.value = Comment;
-    currentPicture = picture;
- 
     
-  });
+    submitBtn.addEventListener('click', () => {     
+      title.innerHTML = modalTitle.value;  
+      Title = modalTitle.value; 
+      comment.innerHTML = modalDescription.value;  
+      Comment = modalDescription.value; 
+      pictureLibraryBrowser.save(library);     
+    })     
+  });   
 
-  submitBtn.addEventListener('click', () => {
-    console.log("bajs");
-    Title = modalTitle.value;
-    console.log(modalTitle.value);
-    console.log(Title);
-    currentPicture.comment = modalDescription.innerText;      
-    pictureLibraryBrowser.save(library);
-
-    });
- 
   closeBtn.addEventListener('click', () => { pageContent.style.display = "none"; }) 
 
   window.addEventListener('click', (e) => {

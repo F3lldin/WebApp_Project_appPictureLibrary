@@ -2,7 +2,8 @@
 'use strict';  // Try without strict mode
 
 //import * as proto from './picture-album-prototypes.js';
-import * as lib from '../model/picture-library-browser.js';
+//import * as lib from '../model/picture-library-browser.js';
+import { pictureLibraryBrowser } from '../model/picture-library-browser.js';
 
 const libraryJSON ="picture-library.json";
 let library;  //Global varibale, Loaded async from the current server in window.load event
@@ -11,7 +12,7 @@ let library;  //Global varibale, Loaded async from the current server in window.
 //use the DOMContentLoaded, or window load event to read the library async and render the images
 window.addEventListener('DOMContentLoaded', async () => {
 
-library = await lib.pictureLibraryBrowser.fetchJSON(libraryJSON);  //reading library from JSON on local server
+library = await pictureLibraryBrowser.fetch();  //reading library from JSON on local server
 
 for (const album of library.albums) {
       renderAlbums(album.headerImage, album.id, album.title, album.comment);

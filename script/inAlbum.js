@@ -18,8 +18,10 @@ library = await lib.pictureLibraryBrowser.fetchJSON(libraryJSON);  //reading lib
   for(const album of library.albums){
     if(album.id === getAlbumId){
         for(const picture of album.pictures){
-            renderImage(`${album.path}/${picture.imgHiRes}`, picture.id, picture.title, picture.comment);
-            renderImage(`${album.path}/${picture.imgLoRes}`, picture.id, picture.title, picture.comment);
+          //HIGH RESOLUTION
+          renderImage(`${album.path}/${picture.imgHiRes}`, picture.id, picture.title, picture.comment);
+          //LOW RESOLUTION
+          renderImage(`${album.path}/${picture.imgLoRes}`, picture.id, picture.title, picture.comment);
             
         }
     }

@@ -2,24 +2,27 @@
 'use strict';  // Try without strict mode
 
 //import * as proto from './picture-album-prototypes.js';
-import * as lib from '../model/picture-library-browser.js';
+//import * as lib from '../model/picture-library-browser.js';
+import { pictureLibraryBrowser } from '../model/picture-library-browser.js';
 
 const libraryJSON ="picture-library.json";
 let library;  //Global varibale, Loaded async from the current server in window.load event
 
+let currentAlbum;
+let currentPicture;
 
 //use the DOMContentLoaded, or window load event to read the library async and render the images
 window.addEventListener('DOMContentLoaded', async () => {
 
-library = await lib.pictureLibraryBrowser.fetchJSON(libraryJSON);  //reading library from JSON on local server 
+library = await pictureLibraryBrowser.fetch(); //reading library from JSON on local server 
 //library = lib.pictureLibraryBrowser.createFromTemplate();  //generating a library template instead of reading JSON
 
 for (const album of library.albums) {
 
     //renderImage(album.headerImage, album.id, picture.id,);
-    for (const picture of album.pictures) {
+    for (const picture of album.pictures) {      
       renderImage(`${album.path}/${picture.imgLoRes}`, picture.id, picture.title, picture.comment);
-      renderImage(`${album.path}/${picture.imgHiRes}`, picture.id, picture.title, picture.comment);
+      renderImage(`${album.path}/${picture.imgHiRes}`, picture.id, picture.title, picture.comment);      
     }
   }
 })
@@ -92,15 +95,20 @@ function renderImage(src, tag, Title, Comment) {
     pageContent.style.display = "block";
     modalTitle.value = Title;
     modalDescription.value = Comment;
-
-    let submitBtn = document.getElementById("submitBtn")
-    submitBtn.addEventListener('submit', () => {
-      Title = modalTitle.innerText;
-      Comment = modalDescription.innerText;
-    })
-     
-
+    currentPicture = picture;
+ 
+    
   });
+
+  submitBtn.addEventListener('click', () => {
+    console.log("bajs");
+    Title = modalTitle.value;
+    console.log(modalTitle.value);
+    console.log(Title);
+    currentPicture.comment = modalDescription.innerText;      
+    pictureLibraryBrowser.save(library);
+
+    });
  
   closeBtn.addEventListener('click', () => { pageContent.style.display = "none"; }) 
 
